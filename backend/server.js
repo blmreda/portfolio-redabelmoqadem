@@ -11,7 +11,7 @@ const app = express();
 // Configuration CORS
 app.use(cors({
   origin: process.env.NODE_ENV === 'production' 
-    ? [process.env.FRONTEND_URL || 'https://portfolio-reda-henna.vercel.app'] // Will use env variable or default Vercel URL
+    ? [process.env.FRONTEND_URL || 'https://portfolio-reda.vercel.app', 'https://your-app-name.vercel.app'] // Will use env variable or default Vercel URL
     : ['http://localhost:5173', 'http://localhost:3000', 'http://localhost:5174'],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],

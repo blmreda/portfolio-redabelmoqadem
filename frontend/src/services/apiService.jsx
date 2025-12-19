@@ -1,7 +1,7 @@
 import axios from "axios";
 
-// Assure-toi que le port correspond à ton backend
-const API_BASE = "http://localhost:5002/api";
+// Use relative paths for API calls so they work in both development and production
+const API_BASE = "/api";
 
 // Skills
 export const getSkills = async () => {

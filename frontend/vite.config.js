@@ -9,6 +9,7 @@ export default defineConfig({
     emptyOutDir: true,
   },
   server: {
+    port: 3000,
     proxy: {
       '/api': {
         target: 'http://localhost:5002',
@@ -16,5 +17,8 @@ export default defineConfig({
         secure: false,
       }
     }
+  },
+  preview: {
+    port: 3000
   }
 })
