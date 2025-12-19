@@ -6,16 +6,14 @@ const app = express();
 
 // 1. Log de démarrage CRITIQUE
 console.log('🚀 SERVER STARTING - VERSION SIMPLIFIED');
-
-// 2. Vérifier les chemins
 console.log('📁 Current directory:', __dirname);
 const frontendDistPath = path.join(__dirname, '../frontend/dist');
 console.log('🔍 Frontend dist path:', frontendDistPath);
 
-// 3. Middleware de base
+// 2. Middleware de base
 app.use(express.json());
 
-// CORS simplifié (si le module est disponible)
+// 3. CORS simplifié (si le module est disponible)
 try {
   const cors = require("cors");
   app.use(cors());
@@ -29,10 +27,6 @@ console.log('⚠️ Skipping MongoDB connection (mongoose not installed)');
 
 // 5. NE PAS charger les routes qui n'existent pas
 console.log('⚠️ Skipping project/skill/contact routes (files may not exist)');
-// COMMENTEZ ces lignes pour l'instant :
-// app.use("/api/projects", require("./src/routes/projectRoutes"));
-// app.use("/api/skills", require("./src/routes/skillRoutes"));
-// app.use("/api/contacts", require("./src/routes/contactRoutes"));
 
 // 6. Route API de test (DOIT TOUJOURS FONCTIONNER)
 app.get('/api', (req, res) => {
@@ -52,22 +46,34 @@ app.get('/api/test', (req, res) => {
   });
 });
 
-// 7. Gestion du frontend
+// 7. Gestion du frontend - CORRECTION CRITIQUE ICI
 if (fs.existsSync(frontendDistPath)) {
   console.log('✅ Found frontend dist folder');
+  
+  // Servir les fichiers statiques (CSS, JS, images)
   app.use(express.static(frontendDistPath));
   
-  // Route pour le frontend React
-  app.get('*', (req, res) => {
-    if (req.path.startsWith('/api')) {
-      return res.status(404).json({ error: 'API route not found' });
-    }
+  // Page d'accueil
+  app.get('/', (req, res) => {
     res.sendFile(path.join(frontendDistPath, 'index.html'));
   });
+  
+  // CORRECTION : Route catch-all POUR LE FRONTEND SEULEMENT
+  // Elle NE DOIT PAS intercepter les routes API
+  app.get('*', (req, res, next) => {
+    // Si c'est une route API, passer au middleware suivant
+    if (req.path.startsWith('/api')) {
+      return next(); // ← CORRECTION IMPORTANTE
+    }
+    
+    // Sinon, servir le frontend React (pour le routing client-side)
+    res.sendFile(path.join(frontendDistPath, 'index.html'));
+  });
+  
 } else {
   console.log('❌ Frontend dist not found, showing backend page');
   
-  // Page d'accueil simple
+  // Page d'accueil simple (fallback)
   app.get('/', (req, res) => {
     res.send(`
       <!DOCTYPE html>
@@ -94,8 +100,27 @@ if (fs.existsSync(frontendDistPath)) {
       </html>
     `);
   });
+  
+  // Route pour les autres pages quand pas de frontend
+  app.get('*', (req, res) => {
+    if (req.path.startsWith('/api')) {
+      return res.status(404).json({ error: 'API route not found' });
+    }
+    res.redirect('/');
+  });
 }
 
-// 8. Export pour Vercel
+// 8. Gestion des erreurs 404 pour les routes API
+app.use((req, res) => {
+  if (req.path.startsWith('/api')) {
+    res.status(404).json({ 
+      error: 'API route not found',
+      path: req.path,
+      available_routes: ['/api', '/api/test']
+    });
+  }
+});
+
+// 9. Export pour Vercel
 console.log('✅ Server configuration complete, ready to export');
 module.exports = app;
