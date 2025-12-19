@@ -4,7 +4,7 @@
       {
         "src": "frontend/package.json",
         "use": "@vercel/static-build",
-        "config": { "distDir": "dist" }  // Vite : build sort dans dist
+        "config": { "distDir": "dist" }  
       },
       {
         "src": "backend/**/*.js",
@@ -18,7 +18,7 @@
       },
       {
         "src": "/(.*)",
-        "dest": "frontend/dist/$1"
+        "dest": "frontend/index.html"
       }
     ]
   }
