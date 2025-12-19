@@ -1,0 +1,393 @@
+/* Skills Section - Cyber Style */
+.skills-section {
+    position: relative;
+    padding: 120px 0;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #2a2a2a 100%);
+    min-height: 100vh;
+    overflow: hidden;
+  }
+  
+  /* Circuit background */
+  .circuit-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.05;
+    background-image: 
+      linear-gradient(90deg, #00ff88 1px, transparent 1px),
+      linear-gradient(180deg, #00ff88 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: circuitMove 20s linear infinite;
+  }
+  
+  @keyframes circuitMove {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: 50px 50px;
+    }
+  }
+  
+  /* Section Title */
+  .section-title {
+    text-align: center;
+    margin-bottom: 80px;
+    position: relative;
+  }
+  
+  .digital-title {
+    font-size: 4rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    background: linear-gradient(45deg, #00ff88, #0088ff, #00ff88);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: gradientFlow 4s ease infinite;
+  }
+  
+  @keyframes gradientFlow {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+  
+  .title-sub {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.7);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+  
+  .title-line {
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #00ff88, transparent);
+    margin: 30px auto;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .title-line::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, white, transparent);
+    animation: lineScan 2s infinite;
+  }
+  
+  @keyframes lineScan {
+    0%, 100% {
+      left: -100%;
+    }
+    50% {
+      left: 100%;
+    }
+  }
+  
+  /* Container */
+  .skills-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+    position: relative;
+  }
+  
+  /* Skills Grid */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+    margin-bottom: 80px;
+  }
+  
+  /* Skill Card */
+  .skill-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(0, 255, 136, 0.1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+  }
+  
+  .skill-card:hover {
+    transform: translateY(-10px);
+    border-color: rgba(0, 255, 136, 0.3);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Skill Header */
+  .skill-header {
+    background: linear-gradient(90deg, rgba(0, 255, 136, 0.1), rgba(0, 136, 255, 0.1));
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .skill-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 15px;
+    background: linear-gradient(45deg, #00ff88, #0088ff);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    color: white;
+    box-shadow: 0 8px 20px rgba(0, 255, 136, 0.3);
+    flex-shrink: 0;
+  }
+  
+  .skill-category {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+    margin: 0;
+  }
+  
+  /* Skill Content */
+  .skill-content {
+    padding: 25px;
+  }
+  
+  .skill-item {
+    margin-bottom: 20px;
+  }
+  
+  .skill-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .skill-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
+  }
+  
+  .skill-level {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #00ff88;
+    font-family: 'Courier New', monospace;
+  }
+  
+  /* Progress Bar */
+  .progress-container {
+    height: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid rgba(0, 255, 136, 0.1);
+  }
+  
+  .progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #00ff88, #0088ff);
+    border-radius: 5px;
+    position: relative;
+    width: 0;
+    transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .progress-bar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    animation: progressShine 2s infinite;
+  }
+  
+  @keyframes progressShine {
+    0%, 100% {
+      transform: translateX(-100%);
+    }
+    50% {
+      transform: translateX(100%);
+    }
+  }
+  
+  /* Tech Mastery Section */
+  .tech-mastery {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 40px;
+    border: 1px solid rgba(0, 255, 136, 0.2);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .tech-header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  
+  .tech-icon {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(45deg, #00ff88, #0088ff);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 35px;
+    color: white;
+    margin: 0 auto 20px;
+    box-shadow: 0 15px 30px rgba(0, 255, 136, 0.3);
+  }
+  
+  .tech-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 20px;
+  }
+  
+  .tech-divider {
+    width: 150px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #00ff88, transparent);
+    margin: 0 auto;
+  }
+  
+  /* Tech Cloud */
+  .tech-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+  }
+  
+  .tech-tag {
+    padding: 12px 25px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(0, 255, 136, 0.2);
+    border-radius: 50px;
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+  
+  .tech-tag:hover {
+    transform: translateY(-3px);
+    background: rgba(0, 255, 136, 0.1);
+    border-color: rgba(0, 255, 136, 0.4);
+    box-shadow: 0 10px 20px rgba(0, 255, 136, 0.1);
+  }
+  
+  /* Loader */
+  .loader-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+  }
+  
+  .cyber-loader {
+    width: 80px;
+    height: 80px;
+    border: 4px solid transparent;
+    border-top-color: #00ff88;
+    border-right-color: #0088ff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  /* Animations */
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .animate-fade-up {
+    animation: fadeUp 0.6s ease forwards;
+  }
+  
+  .delay-100 { animation-delay: 0.1s; }
+  .delay-200 { animation-delay: 0.2s; }
+  
+  /* Responsive */
+  @media (max-width: 1200px) {
+    .skills-grid {
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .skills-section {
+      padding: 60px 0;
+    }
+    
+    .skills-container {
+      padding: 0 20px;
+    }
+    
+    .digital-title {
+      font-size: 2.5rem;
+    }
+    
+    .skills-grid {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+    
+    .tech-mastery {
+      padding: 30px 20px;
+    }
+    
+    .skill-header {
+      padding: 20px;
+    }
+    
+    .skill-icon {
+      width: 50px;
+      height: 50px;
+      font-size: 24px;
+    }
+    
+    .tech-tag {
+      padding: 10px 20px;
+      font-size: 0.9rem;
+    }
+  }
