@@ -6,8 +6,16 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
+.vercel
 
+# Environment variables
+.env
+.env.*
+
+# Dependencies
 node_modules
+
+# Build
 dist
 dist-ssr
 *.local

@@ -66,6 +66,20 @@ const STATIC_PROJECTS = [
   details: 'Ce site statique présente le café, son menu, ses images et ses informations de contact. Il est entièrement responsive et accessible sur tous les appareils.',
   features: 'Menu interactif, Galerie d’images, Informations de contact, Design responsive, Navigation simple et épurée'
 },
+{
+  _id: '2',
+  title: 'MOVIEFLIX',
+  description: 'MOVIEFLIX est une application web développée avec React et Tailwind CSS qui consomme une API de films pour afficher, rechercher et consulter les détails des films populaires dans une interface moderne et responsive. 🎬',
+  year: '2026',
+  featured: true,
+  technologies: ['React', 'TailwindCSS', 'API'],
+  github: 'https://github.com/blmreda/MOVIEFLIX', // ton repo GitHub
+  link: 'https://movieflixforreda.vercel.app/', // l’URL Vercel une fois déployé
+  category: 'Application web / Plateforme de films',
+  details: 'MOVIEFLIX est une application web qui affiche et explore des films via une API externe. Elle permet de découvrir, Ajouter, rechercher et consulter les détails des films dans une interface moderne et responsive.',
+  features: 'Liste de films, Recherche en temps réel, Ajouter des films , Détails des films, Interface responsive, Navigation simple et fluide'
+
+},
 
   
 ];
